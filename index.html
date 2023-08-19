@@ -84,7 +84,7 @@
                     header: true,
                     complete: function (results) {
                         console.log(results);
-                        titular.innerHTML = '<a href="#modalImportante" data-bs-toggle="modal" class="link-warning">' + results.data.length + "</a> MEMORIAS PRESENTADAS ENTRE 2013 Y 2023, PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE";
+                        titular.innerHTML = '<a href="#modalImportante" data-bs-toggle="modal" class="link-warning">' + results.data.length + "</a> MEMORIAS PRESENTADAS PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE";
                         cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center">Evaluación</th></tr>';
                         pie.classList.remove("d-none");
                         results.data.forEach(
