@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 :root {
-    --bs-dark-rgb: 31, 85, 146;
     --bs-font-sans-serif: 'PT Sans Narrow', sans-serif;
-
+    --bs-primary-rgb: 23, 59, 98;
+    --bs-info-rgb:7,69,116;
 }
 
 body {
@@ -11,7 +11,12 @@ body {
 }
 header h1 {
     font-size: calc(0.6rem + 0.6vw);
-    font-weight: 700;
+    font-weight: 400;
     color: white;
     letter-spacing: 0.05rem;
+}
+
+header em, header a{
+    font-style: normal;
+    font-weight: 700;
 }

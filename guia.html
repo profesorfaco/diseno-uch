@@ -10,21 +10,21 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
-        <title>DISEÑO | UNIVERSIDAD DE CHILE</title>
+        <title>MEMORIAS DISEÑO UCH</title>
         <!-- JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
         <header class="container-fluid border-bottom fixed-top shadow-sm">
-            <div class="row bg-dark text-center">
+            <div class="row bg-primary text-center">
                 <div class="col-12">
                     <h1 class="my-4">
-                        <a href="index.html" class="text-light">SELECCIÓN DE <span id="total"></span> MEMORIAS GUIADAS ENTRE 2023 Y 2013</a>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <span role="status" class="ms-2">CARGANDO...</span>
                     </h1>
                 </div>
             </div>
-            <div class="row bg-light">
+            <div class="row bg-info">
                 <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
                     <div class="input-group flex-nowrap py-4">
                         <input type="text" class="form-control" placeholder="Buscar…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
@@ -39,47 +39,42 @@
         </header>
         <main class="container-fluid mt-4 pt-5 g-0">
             <div class="row g-0">
-                <div class="col-12 mt-5 py-5">
+                <div class="col-12 mt-5 pt-5">
                     <div class="table-responsive">
                         <table class="table table-hover align-top small" id="laTabla">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="width: 16vw;">Estudiante</th>
-                                    <th scope="col">Proyecto</th>
-                                    <th scope="col" style="width: 4vw;" class="text-center">Año</th>
-                                    <th scope="col" style="width: 13vw;">Guía</th>
-                                    <th scope="col">Etiquetas</th>
-                                    <th scope="col" class="text-center">Evaluación</th>
-                                </tr>
-                            </thead>
-                            <tbody id="detalles"></tbody>
+                            <thead></thead>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
+        <footer class="text-center py-3"><small class="text-body-secondary">Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark">FACO</a>, quien adapta su propio trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a></small></footer>
         <script>
             window.addEventListener("load", function () {
-                var x = new URLSearchParams(window.location.search).get("id");
+                var i = new URLSearchParams(window.location.search).get("id");
+                console.log(i);
+                var titular = document.querySelector("h1");
+                var cabecera = document.querySelector("thead");
+                var fila = document.querySelector("tbody");                
                 var conteo = 0;
-                console.log(x);
-                var fila = document.querySelector("#detalles");
                 Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
                     download: true,
                     header: true,
                     complete: function (results) {
                         console.log(results);
+                        cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center">Evaluación</th></tr>'                        
                         results.data.forEach((d) => {
-                            if (d.tutor_id == x) {
+                            if (d.tutor_id == i) {
                                 conteo++;
                                 fila.innerHTML +=
                                     '<tr><th scope="row" ><strong>' +
                                     d.author +
-                                    '</strong></th><td><details><summary>'+d.name+'</summary><a href="'+d.uri+'" target="_blank">'+d.title+'</a></details></td><td class="text-center">' +
+                                    '</strong></th><td><details><summary>'+d.name+'</summary><a href="'+d.uri+'" target="_blank" class="link-dark link-underline-opacity-25" title="Ver en Repositorio Académico de la Universidad de Chile">'+d.title+'</a></details></td><td class="text-center">' +
                                     d.year +
-                                    '</td><td><a href="guia.html?id=' +
-                                    d.tutor_id +
-                                    '" class="link-dark" title="Ver más títulos con esta guiatura">' +
+                                    '</td><td><a href="' +
+                                    d.tutor_profile +
+                                    '" class="link-dark link-underline-opacity-25" title="Ver perfil académico" target="_blank">' +
                                     d.tutor +
                                     "</a></td><td>" +
                                     d.tags +
@@ -88,7 +83,7 @@
                                     "</td></tr>";
                             }
                         });
-                        document.querySelector("#total").innerHTML = conteo;
+                        titular.innerHTML = 'SELECCIÓN DE ' + conteo + ' MEMORIAS GUIADAS ENTRE 2013 Y 2023 | <a href="index.html" class="link-light">VOLVER AL LISTADO COMPLETO</a>';
                     },
                 });
             });
