@@ -20,7 +20,7 @@
             <div class="row bg-primary text-center">
                 <div class="col-12">
                     <h1 class="my-4">
-                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <span role="status" class="ms-2">CARGANDO...</span>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <span role="status" class="ms-2">CARGANDO DATOS...</span>
                     </h1>
                 </div>
             </div>
@@ -70,11 +70,11 @@
                                 fila.innerHTML +=
                                     '<tr><th scope="row" ><strong>' +
                                     d.author +
-                                    '</strong></th><td><details><summary>'+d.name+'</summary><a href="'+d.uri+'" target="_blank" class="link-dark link-underline-opacity-25" title="Ver en Repositorio Académico de la Universidad de Chile">'+d.title+'</a></details></td><td class="text-center">' +
+                                    '</strong></th><td><details><summary>'+d.name+'</summary><a href="'+d.uri+'" target="_blank" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">'+d.title+'</a></details></td><td class="text-center">' +
                                     d.year +
                                     '</td><td><a href="' +
                                     d.tutor_profile +
-                                    '" class="link-dark link-underline-opacity-25" title="Ver perfil académico" target="_blank">' +
+                                    '" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" title="Ver perfil académico" target="_blank">' +
                                     d.tutor +
                                     "</a></td><td>" +
                                     d.tags +
@@ -83,7 +83,7 @@
                                     "</td></tr>";
                             }
                         });
-                        titular.innerHTML = 'SELECCIÓN DE ' + conteo + ' MEMORIAS GUIADAS ENTRE 2013 Y 2023 | <a href="index.html" class="link-light">VOLVER AL LISTADO COMPLETO</a>';
+                        titular.innerHTML = '<a href="index.html" class="link-warning">VOLVER AL LISTADO COMPLETO</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIAS GUIADAS ENTRE 2013 Y 2023';
                     },
                 });
             });
