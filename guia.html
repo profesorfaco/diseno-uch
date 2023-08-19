@@ -75,11 +75,7 @@
                                 fila.innerHTML +=
                                     '<tr><th scope="row" ><strong>' +
                                     d.author +
-                                    '</strong></th><td><a href="' +
-                                    d.uri +
-                                    '" class="link-dark" target="_blank">' +
-                                    d.name +
-                                    '</a></td><td class="text-center">' +
+                                    '</strong></th><td><details><summary>'+d.name+'</summary><a href="'+d.uri+'" target="_blank">'+d.title+'</a></details></td><td class="text-center">' +
                                     d.year +
                                     '</td><td><a href="guia.html?id=' +
                                     d.tutor_id +
