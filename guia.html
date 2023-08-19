@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- Metadatos -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://uchile.cl/.resources/portal-uchile/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <!-- CSS Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet" />
+        <!-- Más CSS -->
+        <link rel="stylesheet" href="style.css" />
+        <title>DISEÑO | UNIVERSIDAD DE CHILE</title>
+    </head>
+    <body>
+        <header class="container-fluid border-bottom fixed-top shadow-sm">
+            <div class="row bg-dark text-center">
+                <div class="col-12">
+                    <h1 class="my-4"><a href="index.html" class="text-light">SELECCIÓN DE <span id="total"></span> MEMORIAS GUIADAS ENTRE 2023 Y 2013</a></h1>
+                </div>
+            </div>
+            <div class="row bg-light">
+                <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
+                    <div class="input-group flex-nowrap py-4">
+                        <input type="text" class="form-control" placeholder="Buscar…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
+                        <span class="input-group-text" id="addon-wrapping"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="container-fluid mt-4 pt-5 g-0">
+            <div class="row g-0">
+                <div class="col-12 mt-5 py-5">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-top small" id="laTabla">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 16vw;">Estudiante</th>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col"  style="width: 4vw;" class="text-center">Año</th>
+                                    <th scope="col" style="width: 13vw;">Guía</th>
+                                    <th scope="col">Etiquetas</th>
+                                    <th scope="col" class="text-center">Evaluación</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detalles"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
+            integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script>
+            var x = new URLSearchParams(window.location.search).get('id');
+            var conteo = 0;
+            console.log(x);
+            var fila = document.querySelector("#detalles");
+            Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
+                download: true,
+                header: true,
+                complete: function (results) {
+                    console.log(results);
+                    results.data.forEach((d) => { 
+
+                        if(d.tutor_id == x){
+                            conteo++;
+                            fila.innerHTML +=
+                                '<tr><th scope="row" ><strong>' +
+                                d.author +
+                                '</strong></th><td><a href="'+d.uri+'" class="link-dark" target="_blank">' +
+                                d.name +
+                                '</a></td><td class="text-center">' +
+                                d.year +
+                                '</td><td><a href="guia.html?id='+d.tutor_id+'" class="link-dark" title="Ver más títulos con esta guiatura">' +
+                                d.tutor +
+                                "</a></td><td>" +
+                                d.tags +
+                                '</td><td class="text-center">' +
+                                d.grade +
+                                "</td></tr>"
+                            };
+
+                    });
+                    document.querySelector("#total").innerHTML = conteo;
+                },
+            });
+        </script>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#elInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#laTabla tbody tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+:root {
+    --bs-dark-rgb: 31, 85, 146;
+    --bs-font-sans-serif: 'PT Sans Narrow', sans-serif;
+
+}
+
+body {
+    font-weight: 400;
+}
+header h1 {
+    font-size: calc(0.6rem + 0.6vw);
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.05rem;
+}
