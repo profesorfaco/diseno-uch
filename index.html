@@ -82,13 +82,13 @@
                     complete: function (results) {
                         console.log(results);
                         titular.innerHTML = '<a href="#modalImportante" data-bs-toggle="modal" class="link-warning">' + results.data.length + "</a> MEMORIAS PRESENTADAS PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE";
-                        cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center">Evaluación</th></tr>';
+                        cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
                         pie.classList.remove("d-none");
                         buscador.classList.remove("cargando");
                         results.data.forEach(
                             (d) =>
                                 (fila.innerHTML +=
-                                    '<tr><th scope="row" ><strong>' +
+                                    '<tr><th scope="row" class="ps-4"><strong>' +
                                     d.author +
                                     "</strong></th><td><details><summary>" +
                                     d.name +
@@ -104,9 +104,9 @@
                                     d.tutor +
                                     "</a></td><td>" +
                                     d.tags +
-                                    '</td><td class="text-center"><abbr title="Pendiente">' +
+                                    '</td><td class="text-center pe-4">' +
                                     d.grade +
-                                    "</abbr></td></tr>")
+                                    "</td></tr>")
                         );
                     },
                 });
