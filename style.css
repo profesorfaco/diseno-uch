@@ -2382,6 +2382,9 @@ summary {
 .text-center {
     text-align: center !important;
 }
+.text-end {
+    text-align: right !important;
+}
 .text-nowrap {
     white-space: nowrap !important;
 }
@@ -3595,4 +3598,17 @@ em {
 }
 .cargando {
     opacity: 0.1;
+}
+
+@keyframes vaviene{
+    0%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+span[role=status]{
+    animation:vaviene 1s alternate-reverse infinite;
 }
