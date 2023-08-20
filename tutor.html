@@ -18,6 +18,12 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
     </head>
     <body>
         <header class="container-fluid border-bottom fixed-top shadow-sm">
@@ -51,72 +57,45 @@
                 </div>
             </div>
         </main>
-        <footer class="text-center py-3 d-none">
+        <footer class="text-center py-3">
             <small class="text-body-secondary">
-                Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark">FACO</a>, quien adapta su propio trabajo para
-                <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>. Colaboran ??? y ???.
+                Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark">FACO</a>, quien adapta su propio trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>
             </small>
         </footer>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalImportante" tabindex="-1" aria-labelledby="modalImportanteLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalImportanteLabel">Sobre el número de memorias</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Sólo se consideran memorias presentadas entre los años 2013 y 2023, que hayan sido:</p>
-                        <ol>
-                            <li>ingresadas en los registros oficiales de Información y Bibliotecas de la Universidad de Chile; y</li>
-                            <li>
-                                guiadas por profesoras/es que, para el segundo semestre del año 2023, siguen adscritas/os al <a href="https://fau.uchile.cl/diseno" class="link-dark" target="_blank">Departamento de Diseño</a> o la
-                                <a href="https://fau.uchile.cl/facultad/escuelas-y-direcciones/escuela-de-pregrado" class="link-dark" target="_blank">Escuela de Pregrado Unificada</a> de la Facultad de Arquitectura y Urbanismo de la
-                                Universidad del Chile.
-                            </li>
-                        </ol>
-                        <p>Con estas condiciones se aseguran las posibilidades de consultar la memoria y/o contactar con profesores guías.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script>
             window.addEventListener("load", function () {
+                var i = new URLSearchParams(window.location.search).get("id");
+                console.log(i);
                 var titular = document.querySelector("h1");
                 var buscador = document.querySelector("#buscador");
                 var cabecera = document.querySelector("thead");
                 var fila = document.querySelector("tbody");
-                var pie = document.querySelector("footer");
+                var conteo = 0;
                 Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
                     download: true,
                     header: true,
                     complete: function (results) {
                         console.log(results);
-                        titular.innerHTML =
-                            '<a href="#modalImportante" data-bs-toggle="modal" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">' +
-                            results.data.length +
-                            "</a> MEMORIAS PRESENTADAS PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE";
+                        buscador.classList.remove("cargando");
                         cabecera.innerHTML =
                             '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
-                        pie.classList.remove("d-none");
-                        buscador.classList.remove("cargando");
-                        results.data.forEach(
-                            (d) =>
-                                (fila.innerHTML +=
+                        results.data.forEach((d) => {
+                            if (d.tutor_id == i) {
+                                conteo++;
+                                fila.innerHTML +=
                                     '<tr><th scope="row" class="ps-4"><strong>' +
                                     d.author +
                                     "</strong></th><td><details><summary>" +
                                     d.name +
                                     '</summary><a href="' +
                                     d.uri +
-                                    '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' +
+                                    '" target="_blank" class="link-secondary link-underline-opacity-25 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' +
                                     d.title +
                                     '</a></details></td><td class="text-center">' +
                                     d.year +
-                                    '</td><td><a href="tutor.html?id=' +
-                                    d.tutor_id +
-                                    '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' +
+                                    '</td><td><a href="' +
+                                    d.tutor_profile +
+                                    '" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" title="Ver perfil académico" target="_blank">' +
                                     d.tutor +
                                     "</a></td><td>" +
                                     d.tags +
@@ -124,18 +103,15 @@
                                     d.grade +
                                     '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta evaluación">' +
                                     d.grade +
-                                    '</a></td></tr>')
-                        );
+                                    "</a></td></tr>";
+                            }
+                        });
+                        titular.innerHTML =
+                            '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER AL LISTADO COMPLETO</a> | SELECCIÓN DE <em>' + conteo + "</em> MEMORIAS GUIADAS ENTRE 2013 Y 2023";
                     },
                 });
             });
         </script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
         <script>
             $(document).ready(function () {
                 $("#elInput").on("keyup", function () {
@@ -146,6 +122,5 @@
                 });
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </body>
 </html>
