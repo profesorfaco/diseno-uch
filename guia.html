@@ -26,7 +26,7 @@
             </div>
             <div class="row bg-info">
                 <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
-                    <div class="input-group flex-nowrap py-4">
+                    <div class="input-group flex-nowrap py-4 cargando" id="buscador">
                         <input type="text" class="form-control" placeholder="Buscar…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
                         <span class="input-group-text" id="addon-wrapping">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -55,6 +55,7 @@
                 var i = new URLSearchParams(window.location.search).get("id");
                 console.log(i);
                 var titular = document.querySelector("h1");
+                var buscador = document.querySelector("#buscador");
                 var cabecera = document.querySelector("thead");
                 var fila = document.querySelector("tbody");                
                 var conteo = 0;
@@ -63,6 +64,7 @@
                     header: true,
                     complete: function (results) {
                         console.log(results);
+                        buscador.classList.remove("cargando");
                         cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center">Evaluación</th></tr>'                        
                         results.data.forEach((d) => {
                             if (d.tutor_id == i) {

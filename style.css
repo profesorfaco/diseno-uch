@@ -20,3 +20,7 @@ header em, header a{
     font-style: normal;
     font-weight: 700;
 }
+
+.cargando{
+    opacity:.1;
+}
