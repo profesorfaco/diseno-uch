@@ -4,6 +4,7 @@
     --bs-font-sans-serif: 'PT Sans Narrow', sans-serif;
     --bs-primary-rgb: 23, 59, 98;
     --bs-info-rgb:7,69,116;
+    --bs-warning-rgb:251, 202, 100;
 }
 
 body {
