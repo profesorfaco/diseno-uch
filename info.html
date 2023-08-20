@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <title>MEMORIAS DISEÑO UCH</title>
+        <script src="papaparse.min.js"></script>
+    </head>
+    <body>
+        <header class="container-fluid border-bottom fixed-top shadow-sm">
+            <div class="row bg-primary text-center">
+                <div class="col-12">
+                    <h1 class="my-4"><a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER AL LISTADO COMPLETO</a></h1>
+                </div>
+            </div>
+            <div class="row bg-info">
+                <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
+                    <h2 class="text-center text-light fs-5 my-4">Más información</h2>
+                </div>
+            </div>
+        </header>
+        <main class="container mt-4 pt-5 g-0">
+            <div class="row mt-5 pt-5">
+                <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
+                    <div class="table-responsive my-2">
+                        <p>En el listado de <span id="total"></span> memorias disponibles es posible encontrar 5 alternativas de título profesional</p>
+                        <table class="table table-hover align-top small">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Nº</th>
+                                    <th>Título profesional</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center" id="dis">…</td>
+                                    <td>Diseñador(a)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" id="disvm">…</td>
+                                    <td>Diseñador(a) con mención Visual y Medios</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" id="disis">…</td>
+                                    <td>Diseñador(a) con mención Industrial y Servicios</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" id="disg">…</td>
+                                    <td>Diseñador(a) Gráfico(a)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" id="disi">…</td>
+                                    <td>Diseñador(a) Industrial</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Esto se debe a que la Universidad de Chile ofrece <em>desde el año 2018</em> el programa académico de la Licenciatura en Diseño, conducente a los títulos profesionales de <em>Diseñador(a)</em>, <em>Diseñador(a) mención Visual y Medios</em>, o <em>Diseñador(a) mención Industrial y Servicios</em>.</p>
+
+                    <p>Los títulos profesionales de Diseñador(a) Gráfico(a) y Diseñador(a) Industrial, corresponden al reglamento y plan de estudios aprobado en el año 1997 y derogado en el año 2018.</p>
+
+                    <p><em>Según el reglamento y plan de estudios aprobado en el año 2018 (<a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">D.U. EXENTO N°0053924</a>), el proceso de titulación profesional corresponde al tercero de tres ciclos formativos, y tiene una duración de dos semestres (noveno y décimo)</em>; cada estudiante cuenta con cuatro semestres como límite para aprobar sus actividades curriculares, incluido el Examen de Título.</p>
+
+                    <p><em>Durante el noveno semestre, cada estudiante deberá realizar la investigación propia de todo proyecto</em>. <em>Al finalizar el noveno semestre, cada estudiante debe entregar un informe que será evaluado por una comisión de 3 académicos(as)</em>. En la comisión se incluye el (la) profesor(a) guía e integrantes propuestos por el (la) Jefe(a) de Carrera, en consulta al profesor guía, y ratificados por el (la) Director(a) de la Escuela de Pregrado. Estos(as) académicos(as) deberán ser docentes de la carrera de Diseño, con jerarquía de Profesor y adscritos al Departamento de Diseño o la Escuela de Pregrado.</p>
+
+                    <p>Para los(as) estudiantes que decidan optar al título profesional con mención, los(as) tres académicos(as) deberán pertenecer a dicha mención. Los(as) estudiantes que decidan optar por no tener mención, tendrán una comisión compuesta por académicos(as) de ambas menciones.</p>
+
+                    <p>Cada integrante en la comisión generará un informe escrito con su evaluación del documento entregado por el (la) estudiante. De acuerdo a lo indicado en los informes, el (la) profesor(a) guía procederá a calificar esta etapa del Proyecto de Título I, calificación que será aprobatoria si, al menos, dos integrantes de la comisión así lo definen.</p>
+
+                    <p><em>Luego, durante el décimo semestre, cada estudiante deberá desarrollar el proyecto planteado para finalizar el ciclo con el acto formal de presentación y defensa del proyecto, acto denominado Examen de Título, el que se realizará frente a una comisión examinadora compuesta por 4 académicos(as)</em>: el(la) Decano(a) o en quien delegue el ejercicio de dicha facultad (quien presidirá la comisión), el (la) profesor(a) guía y 2 académicos(as), de jerarquía profesor del Departamento de Diseño o la Escuela de Pregrado.</p>
+
+                    <p>Cada estudiante, a través de su profesor(a) guía, podrá proponer que integre la comisión examinadora un(a) académico(a) o profesional invitado(a) que desarrolle temáticas pertinentes a su proyecto. Este(a) intivado(a) podrá formular preguntas, pero en ningún caso calificar.</p>
+
+                    <p>El (la) profesor(a) guía participará en la comisión como informante del proceso llevado a cabo por el (la) estudiante, y podrá formular preguntas, pero en ningún caso podrá calificar.</p>
+
+                    <p>Quienes sí podrán calificar en la comisión, deben considerar algunos puntos que, a continuación, se organizan de lo general a lo particular:</p>
+
+                    <ul>
+                        <li class="pb-2">En el Artículo 3º del <a href="https://uchile.cl/presentacion/senado-universitario/reglamentos/reglamentos-aprobados-o-modificados-por-el-senado-universitario/reglamento-general-de-los-estudios-universitarios-de-pregrado" target="_blank" class="link-dark">REGLAMENTO GENERAL DE LOS ESTUDIOS UNIVERSITARIOS DE PREGRADO DE LA UNIVERSIDAD DE CHILE</a>, se lee: <em>Los estudios conducentes a un título profesional universitario son aquéllos que proporcionan el dominio integral de una especialidad […]; como también las competencias necesarias para desempeñarse en un campo profesional</em>.</li>
+                        
+                        <li class="pb-2">En el Artículo 35 del <a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">REGLAMENTO Y PLAN DE ESTUDIOS DE LA LICENCIATURA EN DISEÑO, CONDUCENTE A LOS TÍTULOS PROFESIONALES DE DISEÑADOR(A); DISEÑADOR (A) MENCIÓN VISUAL Y MEDIOS; Y DISEÑADOR(A) MENCIÓN INDUSTRIAL Y SERVICIOS</a>, se lee: <em>La Universidad de Chile, forma a sus diseñadores(as) para intervenir y transformar la realidad, situados en la Facultad de Arquitectura y Urbanismo, que se caracteriza por las diferentes escalas del campo disciplinar. Facilita en ellos su desarrollo en un proceso de formación continua como ciudadanos(as) íntegros(as), en sintonía con los desafíos de Chile y con una visión ética, crítica y pluralista, valores inherentes a nuestra Universidad</em>.</li>
+
+                        <li class="pb-2">En el Artículo 34 del <a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">reglamento recién referido</a>, se lee que: <em>El perfil de egreso del (de la) Diseñador(a) de la Universidad de Chile, en cuanto a su saber fundamental, se trata de un(a) profesional formado(a) para conceptualizar, proyectar y producir creativa y reflexivamente los objetos, signos y fenómenos del entorno humano artificial y natural a través de procesos significativos de creación morfológica de mediación, que generen valor social y económico y ambiental, para y desde las ciudadanías, las comunidades y la persona</em>.</li>
+
+                        <li class="pb-1">En el Artículo 11 del <a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">mismo reglamento</a>, se lee que los proyectos de título pueden tener <em>tres posibles énfasis:
+                            <ul>
+                                <li>La innovación (desarrollo de propuesta de diseño a nivel profesional)</li>
+                                <li>La investigación (desarrollo de un proyecto de investigación pura o aplicada en el ámbito del Diseño)</li>
+                                <li>La creación (desarrollo de proyectos de carácter experimental que contribuyan explícitamente al desarrollo de la disciplina del Diseño y/o a redefinir sus límites y relaciones con otras disciplinas)</li>
+                            </ul>
+                        </em>
+                        </li>
+                    </ul>
+
+                    <p class="mb-5">Para más información, sírvase consultar directamente el documento de <a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">D.U. EXENTO N°0053924</a>, considerando que en el Artículo 11 del mismo documento se indica que: <em>existirá además un protocolo y documentación especifica que regule el proceso de Titulación, el que deberá ser aprobado por el Comité de Carrera. Este protocolo definirá aspectos operativos y específicos del proceso y no estará en ningún caso por sobre el presente reglamento</em>.</p>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center py-3 d-none">
+            <small class="text-body-secondary">
+                <a href="index.html" class="link-dark">Volver al listado completo</a> | Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su propio
+                trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>.
+            </small>
+        </footer>
+        <script>
+            const pie = document.querySelector("footer");
+            const nTotal = document.querySelector("#total");
+            var mSIN = 0;
+            var mDG = 0;
+            var mDI = 0;
+            var mVM = 0;
+            var mIS = 0;
+            var extra = 0;
+            const dis = document.querySelector("#dis");
+            const disVM = document.querySelector("#disvm");
+            const disIS = document.querySelector("#disis");
+            const disG = document.querySelector("#disg");
+            const disI = document.querySelector("#disi");
+            Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
+                download: true,
+                header: true,
+                complete: function (results) {
+                    console.log(results);
+                    pie.classList.remove("d-none");
+                    nTotal.innerHTML = results.data.length;
+                    results.data.forEach((x) => {
+                        if (x.title == "Memoria para optar al título de Diseñadora Gráfica" || x.title == "Memoria para optar al título de Diseñador Gráfico") {
+                            mDG++;
+                        } else if (x.title == "Memoria para optar al título de Diseñadora Industrial" || x.title == "Memoria para optar al título de Diseñador Industrial") {
+                            mDI++;
+                        } else if (x.title == "Memoria para optar al título de Diseñadora con mención Visual y Medios" || x.title == "Memoria para optar al título de Diseñador con mención Visual y Medios") {
+                            mVM++;
+                        } else if (x.title == "Memoria para optar al título de Diseñadora con mención Industrial y Servicios" || x.title == "Memoria para optar al título de Diseñador con mención Industrial y Servicios") {
+                            mIS++;
+                        } else if (x.title == "Memoria para optar al título de Diseñadora" || x.title == "Memoria para optar al título de Diseñador") {
+                            mSIN++;
+                        } else {
+                            extra++;
+                        }
+                    });
+                    dis.innerHTML = mSIN;
+                    disVM.innerHTML = mVM;
+                    disIS.innerHTML = mIS;
+                    disG.innerHTML = mDG;
+                    disI.innerHTML = mDI;
+                },
+            });
+        </script>
+    </body>
+</html>

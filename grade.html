@@ -3,27 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="https://uchile.cl/.resources/portal-uchile/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <!-- CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+        <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css">
         <title>MEMORIAS DISEÑO UCH</title>
-        <!-- JS -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"
-            integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
+        <script src="papaparse.min.js"></script>
     </head>
     <body>
         <header class="container-fluid border-bottom fixed-top shadow-sm">
@@ -57,59 +43,39 @@
                 </div>
             </div>
         </main>
-        <footer class="text-center py-3">
+        <footer class="text-center py-3 d-none">
             <small class="text-body-secondary">
-                Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark">FACO</a>, quien adapta su propio trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>
+                <a href="info.html" class="link-dark">Más información</a> | Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su propio trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>.
             </small>
         </footer>
         <script>
-            window.addEventListener("load", function () {
-                var i = new URLSearchParams(window.location.search).get("id");
-                console.log(i);
-                var titular = document.querySelector("h1");
-                var buscador = document.querySelector("#buscador");
-                var cabecera = document.querySelector("thead");
-                var fila = document.querySelector("tbody");
-                var conteo = 0;
-                Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
-                    download: true,
-                    header: true,
-                    complete: function (results) {
-                        console.log(results);
-                        buscador.classList.remove("cargando");
-                        cabecera.innerHTML =
-                            '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
-                        results.data.forEach((d) => {
-                            if (d.grade == i) {
-                                conteo++;
-                                fila.innerHTML +=
-                                    '<tr><th scope="row" class="ps-4"><strong>' +
-                                    d.author +
-                                    "</strong></th><td><details><summary>" +
-                                    d.name +
-                                    '</summary><a href="' +
-                                    d.uri +
-                                    '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' +
-                                    d.title +
-                                    '</a></details></td><td class="text-center">' +
-                                    d.year +
-                                    '</td><td><a href="tutor.html?id=' +
-                                    d.tutor_id +
-                                    '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' +
-                                    d.tutor +
-                                    "</a></td><td>" +
-                                    d.tags +
-                                    '</td><td class="text-center pe-4">' +
-                                    d.grade +
-                                    '</a></td></tr>';
-                            }
-                        });
-                        titular.innerHTML =
-                            '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER AL LISTADO COMPLETO</a> | SELECCIÓN DE <em>' + conteo + "</em> MEMORIAS EVALUADAS ENTRE 2013 Y 2023";
-                    },
-                });
+            var i = new URLSearchParams(window.location.search).get("id");
+            if (i == null){window.location.href="index.html";}
+            const titular = document.querySelector("h1");
+            const buscador = document.querySelector("#buscador");
+            const cabecera = document.querySelector("thead");
+            const fila = document.querySelector("tbody");
+            const pie = document.querySelector("footer");
+            var conteo = 0;
+            Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
+                download: true,
+                header: true,
+                complete: function (results) {
+                    console.log(results);
+                    pie.classList.remove("d-none");
+                    buscador.classList.remove("cargando");
+                    cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
+                    results.data.forEach((d) => {
+                        if (d.grade == i) {
+                            conteo++;
+                            fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong>' + d.author + '</strong></th><td><details><summary>' + d.name + '</summary><a href="' + d.uri + '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' + d.title + '</a></details></td><td class="text-center">' + d.year + '</td><td><a href="tutor.html?id=' + d.tutor_id + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.tutor + '</a></td><td>' + d.tags + '</td><td class="text-center pe-4">' + d.grade + '</a></td></tr>';
+                        }
+                    });
+                    titular.innerHTML = '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER AL LISTADO COMPLETO</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIAS EVALUADAS ENTRE 2013 Y 2023';
+                },
             });
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>      
         <script>
             $(document).ready(function () {
                 $("#elInput").on("keyup", function () {
