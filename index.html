@@ -52,6 +52,7 @@
         <footer class="text-center pt-4 pb-3">
             <p class="small text-body-secondary"><a href="info.html" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">Más información</a> | Prototipo desarrollado por <a href="https://faco.cl/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">memorias de Diseño UC</a> | Código fuente del prototipo en <a href="https://github.com/profesorfaco/diseno-uch" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" target="_blank">repositorio de GitHub</a>.</p>
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             const titular = document.querySelector("#title");
             const buscador = document.querySelector("#buscador");
@@ -59,9 +60,6 @@
             for (var f = 0; f < 10; f++){
                 fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </strong></th><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td class="text-center"> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-9"></span></p> </td><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td class="text-center"> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-6"></span></p> </td></tr>'
             }
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
             Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
                 download: true,
                 header: true,
