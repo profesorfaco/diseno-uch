@@ -8,7 +8,7 @@ Prototipo de buscador de memorias presentadas a la Universidad de Chile para opt
 - Diseñador(a) Gráfico(a)
 - Diseñador(a) Industrial
 
-El prototipo demora en cargar porque los datos están en un [CSV (184 KB)](https://github.com/profesorfaco/diseno-uch/blob/main/titulos-2023-2013.csv), cuya consulta se resuelve con programación del lado del cliente. 
+El prototipo demora en cargar porque los datos están en un [CSV (197 KB)](https://github.com/profesorfaco/diseno-uch/blob/main/titulos-2023-2013.csv), cuya consulta se resuelve con programación del lado del cliente. 
 
 Con los datos en un formato más adecuado y algo de programación del lado del servidor, el buscador podría cargar a la velocidad que lo hace http://diseno.uc.cl/memorias/
 
