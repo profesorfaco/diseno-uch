@@ -3,12 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex,nofollow">
         <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
-        <title>MEMORIAS DISEÑO UCH</title>
+        <title>[PROTOTIPO] MEMORIAS DISEÑO UCH</title>
         <script src="papaparse.min.js"></script>
     </head>
     <body>
@@ -116,7 +117,7 @@
             var mDI = 0;
             var mVM = 0;
             var mIS = 0;
-            var extra = 0;
+            var extra = [];
             const dis = document.querySelector("#dis");
             const disVM = document.querySelector("#disvm");
             const disIS = document.querySelector("#disis");
@@ -141,7 +142,7 @@
                         } else if (x.title == "Memoria para optar al título de Diseñadora" || x.title == "Memoria para optar al título de Diseñador") {
                             mSIN++;
                         } else {
-                            extra++;
+                            extra.push(x);
                         }
                     });
                     dis.innerHTML = mSIN;
@@ -149,6 +150,7 @@
                     disIS.innerHTML = mIS;
                     disG.innerHTML = mDG;
                     disI.innerHTML = mDI;
+                    console.log(extra);
                 },
             });
         </script>
