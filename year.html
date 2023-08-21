@@ -62,7 +62,7 @@
                     buscador.classList.remove("cargando");
                     cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
                     results.data.forEach((d) => {
-                        if (d.grade == i) {
+                        if (d.year == i) {
                             conteo++;
                             fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong>' + d.author + '</strong></th><td><details><summary>' + d.name + '</summary><a href="' + d.uri + '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' + d.title + '</a></details></td><td class="text-center"><a href="year.html?id=' + d.year + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.year + '</a></td><td><a href="tutor.html?id=' + d.tutor_id + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.tutor + '</a></td><td>' + d.tags + '</td><td class="text-center pe-4"><a href="grade.html?id=' + d.grade + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta evaluación">' + d.grade + '</a></td></tr>';
                         }
