@@ -18,7 +18,7 @@
             <div class="row bg-info">
                 <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
                     <div class="input-group flex-nowrap py-4 cargando" id="buscador">
-                        <input type="text" class="form-control shadow-sm" placeholder="Buscar…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
+                        <input type="text" class="form-control shadow-sm" placeholder="Buscar en la tabla…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
                         <span class="input-group-text" id="addon-wrapping">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -75,7 +75,11 @@
                             fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong>' + d.author + '</strong></th><td><details><summary>' + d.name + '</summary><a href="' + d.uri + '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' + d.title + '</a></details></td><td class="text-center"><a href="year.html?id=' + d.year + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.year + '</a></td><td><a href="tutor.html?id=' + d.tutor_id + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.tutor + '</a></td><td>' + d.tags + '</td><td class="text-center pe-4"><a href="grade.html?id=' + d.grade + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta evaluación">' + d.grade + '</a></td></tr>';
                         }
                     });
-                    titular.innerHTML = '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER AL LISTADO COMPLETO</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIAS';
+                    if (conteo > 1){
+                    titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIAS';
+                    } else {
+                    titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIA';
+                    }
                 },
             });
         </script>
