@@ -3,17 +3,17 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="noindex,nofollow">
+        <meta name="robots" content="noindex,nofollow" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+        <link href="style.css" rel="stylesheet" />
         <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <link rel="stylesheet" href="style.css">
         <title>[PROTOTIPO] MEMORIAS DISEÑO UCH</title>
-        <script src="papaparse.min.js"></script>
     </head>
     <body>
         <header class="container-fluid border-bottom fixed-top shadow">
             <div class="row bg-primary text-center">
                 <div class="col-12">
-                    <h1 class="my-4"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <span role="status" class="ms-2">CARGANDO DATOS...</span></h1>
+                    <h1 class="my-4" id="title"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <span role="status" class="ms-2">CARGANDO DATOS...</span></h1>
                 </div>
             </div>
             <div class="row bg-info">
@@ -34,33 +34,42 @@
                 <div class="col-12 mt-5 pt-5">
                     <div class="table-responsive">
                         <table class="table table-hover align-top small" id="laTabla">
-                            <thead></thead>
-                            <tbody></tbody>
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 15%;" class="ps-4">Estudiante</th>
+                                    <th scope="col" style="width: 30%">Proyecto</th>
+                                    <th scope="col" style="width: 5%" class="text-center">Año</th>
+                                    <th scope="col" style="width: 10%">Guía</th>
+                                    <th scope="col" style="width: 20%">Etiquetas</th>
+                                    <th scope="col" style="width: 5%;" class="text-center pe-3">Evaluación</th></tr></thead>
+                            <tbody id="filas">
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
-        <footer class="text-center pt-4 pb-3 d-none">
+        <footer class="text-center pt-4 pb-3">
             <p class="small text-body-secondary"><a href="info.html" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">Más información</a> | Prototipo desarrollado por <a href="https://faco.cl/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">memorias de Diseño UC</a> | Código fuente del prototipo en <a href="https://github.com/profesorfaco/diseno-uch" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" target="_blank">repositorio de GitHub</a>.</p>
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             var i = new URLSearchParams(window.location.search).get("id");
             if (i == null){window.location.href="index.html";}
-            const titular = document.querySelector("h1");
+            const titular = document.querySelector("#title");
             const buscador = document.querySelector("#buscador");
-            const cabecera = document.querySelector("thead");
-            const fila = document.querySelector("tbody");
-            const pie = document.querySelector("footer");
+            const fila = document.querySelector("#filas");
+            for (var f = 0; f < 10; f++){
+                fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </strong></th><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td class="text-center"> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-9"></span></p> </td><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-12"></span></p> </td><td class="text-center"> <p aria-hidden="true" class="placeholder-glow"><span class="placeholder col-6"></span></p> </td></tr>'
+            }
             var conteo = 0;
             Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
                 download: true,
                 header: true,
                 complete: function (results) {
                     console.log(results);
-                    pie.classList.remove("d-none");
                     buscador.classList.remove("cargando");
-                    cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
+                    fila.innerHTML = '';
                     results.data.forEach((d) => {
                         if (d.year == i) {
                             conteo++;
@@ -71,7 +80,7 @@
                 },
             });
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             $(document).ready(function () {
                 $("#elInput").on("keyup", function () {
