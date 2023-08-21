@@ -44,31 +44,9 @@
                 </div>
             </div>
         </main>
-        <footer class="text-center py-3 d-none">
-            <small class="text-body-secondary">
-                <a href="info.html" class="link-dark">Más información</a> | Desarrollado por <a href="https://faco.cl/" target="_blank" class="link-dark" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su propio trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-dark">memorias de Diseño UC</a>.
-            </small>
+        <footer class="text-center pt-4 pb-3 d-none">
+            <p class="small text-body-secondary"><a href="info.html" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">Más información</a> | Prototipo desarrollado por <a href="https://faco.cl/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">memorias de Diseño UC</a> | Código fuente del prototipo en <a href="https://github.com/profesorfaco/diseno-uch" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" target="_blank">repositorio de GitHub</a>.</p>
         </footer>
-        <!-- Modal -->
-        <div class="modal fade" id="modalImportante" tabindex="-1" aria-labelledby="modalImportanteLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalImportanteLabel">Sobre el número de memorias</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Sólo se consideran <em>memorias presentadas entre los años 2013 y 2023</em>, que hayan sido:</p>
-                        <ul>
-                            <li>ingresadas en los registros oficiales de <a href="https://uchile.cl/bibliotecas" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Información y Bibliotecas de la Universidad de Chile</a>; y</li>
-                            <li>guiadas por profesores(as) que, para el segundo semestre del año 2023, siguen adscritos(as) al <a href="https://fau.uchile.cl/diseno" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Departamento de Diseño</a> o la <a href="https://fau.uchile.cl/facultad/escuelas-y-direcciones/escuela-de-pregrado" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Escuela de Pregrado</a> de la Facultad de Arquitectura y Urbanismo de la Universidad del Chile.</li>
-                        </ul>
-                        <p>Con estas condiciones se aseguran las posibilidades de consultar la memoria y/o contactar con profesores guías.</p>
-                        <p><a href="info.html" class="link-dark">Más información</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script>
             const titular = document.querySelector("h1");
             const buscador = document.querySelector("#buscador");
@@ -80,7 +58,7 @@
                 header: true,
                 complete: function (results) {
                     console.log(results);
-                    titular.innerHTML = '<a href="#modalImportante" data-bs-toggle="modal" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">' + results.data.length + '</a> MEMORIAS PRESENTADAS PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE';
+                    titular.innerHTML = '<a href="info.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover" title="Más información">' + results.data.length + '</a> MEMORIAS PRESENTADAS PARA OPTAR AL TÍTULO DE DISEÑADOR/A DE LA UNIVERSIDAD DE CHILE';
                     cabecera.innerHTML = '<tr><th scope="col" style="width: 16vw;" class="ps-4">Estudiante</th><th scope="col">Proyecto</th><th scope="col" style="width: 4vw;" class="text-center">Año</th><th scope="col" style="width: 13vw;">Guía</th><th scope="col">Etiquetas</th><th scope="col" class="text-center pe-4">Evaluación</th></tr>';
                     pie.classList.remove("d-none");
                     buscador.classList.remove("cargando");
