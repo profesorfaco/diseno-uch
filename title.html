@@ -75,10 +75,17 @@
                             fila.innerHTML += '<tr><th scope="row" class="ps-4"><strong>' + d.author + '</strong></th><td><details><summary>' + d.name + '</summary><a href="' + d.uri + '" target="_blank" class="link-secondary link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver en Repositorio Académico de la Universidad de Chile">' + d.title + '</a></details></td><td class="text-center"><a href="year.html?id=' + d.year + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.year + '</a></td><td><a href="tutor.html?id=' + d.tutor_id + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta guiatura">' + d.tutor + '</a></td><td>' + d.tags + '</td><td class="text-center pe-4"><a href="grade.html?id=' + d.grade + '" class="link-dark link-underline-opacity-10 link-underline-opacity-75-hover" title="Ver más títulos con esta evaluación">' + d.grade + '</a></td></tr>';
                         }
                     });
-                    if (conteo > 1){
-                    titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIAS';
+                    var pluralsingular;
+                    if (conteo > 1) {
+                        pluralsingular = "MEMORIAS";
                     } else {
-                    titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | SELECCIÓN DE <em>' + conteo + '</em> MEMORIA';
+                        pluralsingular = "MEMORIA";
+                    }
+
+                    if (document.referrer.indexOf("profesorfaco.github.io/diseno-uch/") >= 0) {
+                        titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | SELECCIÓN DE <em>' + conteo + '</em> ' + pluralsingular;
+                    } else {
+                        titular.innerHTML = '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VER LISTADO COMPLETO DE MEMORIAS</a> | SELECCIÓN DE <em>' + conteo + '</em> ' + pluralsingular;
                     }
                 },
             });

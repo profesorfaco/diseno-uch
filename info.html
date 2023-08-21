@@ -12,7 +12,7 @@
         <header class="container-fluid border-bottom fixed-top shadow">
             <div class="row bg-primary text-center">
                 <div class="col-12">
-                    <h1 class="my-4"><a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a> | MÁS INFORMACIÓN</h1>
+                    <h1 class="my-4"><span id="title"></span> | MÁS INFORMACIÓN</h1>
                 </div>
             </div>
             <div class="row bg-info">
@@ -106,12 +106,12 @@
                 </div>
             </div>
         </main>
-        <footer class="text-center pt-4 pb-3 d-none">
-            <p class="small text-body-secondary"><a href="index.html" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">Volver al listado completo</a> | Prototipo desarrollado por <a href="https://faco.cl/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">memorias de Diseño UC</a> | Código fuente del prototipo en <a href="https://github.com/profesorfaco/diseno-uch" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" target="_blank">repositorio de GitHub</a>.</p>
+        <footer class="text-center pt-4 pb-3">
+            <p class="small text-body-secondary"><a href="index.html" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">Ver listado completo de memorias</a> | Prototipo desarrollado por <a href="https://faco.cl/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" title="Felipe Alberto Cortez Orellana">FACO</a>. Adaptado de su trabajo para <a href="https://diseno.uc.cl/memorias/" target="_blank" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover">memorias de Diseño UC</a> | Código fuente del prototipo en <a href="https://github.com/profesorfaco/diseno-uch" class="link-secondary link-underline-opacity-50 link-underline-opacity-75-hover" target="_blank">repositorio de GitHub</a>.</p>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            const pie = document.querySelector("footer");
+            const titular = document.querySelector("#title");            
             const nTotal = document.querySelector("#total");
             var mSIN = 0;
             var mDG = 0;
@@ -124,12 +124,18 @@
             const disIS = document.querySelector("#disis");
             const disG = document.querySelector("#disg");
             const disI = document.querySelector("#disi");
+
+            if (document.referrer.indexOf("profesorfaco.github.io/diseno-uch/") >= 0) {
+                titular.innerHTML = '<a href="javascript: history.go(-1)" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VOLVER</a>';
+            } else {
+                titular.innerHTML = '<a href="index.html" class="link-warning link-underline-opacity-50 link-underline-opacity-100-hover">VER LISTADO COMPLETO DE MEMORIAS</a>';
+            }
+
             Papa.parse("https://raw.githubusercontent.com/profesorfaco/diseno-uch/main/titulos-2023-2013.csv", {
                 download: true,
                 header: true,
                 complete: function (results) {
                     console.log(results);
-                    pie.classList.remove("d-none");
                     nTotal.innerHTML = results.data.length;
                     results.data.forEach((x) => {
                         if (x.title == "Memoria para optar al título de Diseñadora Gráfica" || x.title == "Memoria para optar al título de Diseñador Gráfico") {
