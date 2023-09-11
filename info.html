@@ -18,7 +18,7 @@
             <div class="row bg-info">
                 <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
                     <div class="input-group flex-nowrap py-4 cargando" id="buscador">
-                        <input type="text" class="form-control shadow-sm" placeholder="Buscar en la tabla…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" />
+                        <input type="text" class="form-control shadow-sm" placeholder="Buscar en la tabla…" aria-label="Buscar" aria-describedby="addon-wrapping" id="elInput" disabled />
                         <span class="input-group-text" id="addon-wrapping">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -31,13 +31,13 @@
         <main class="container mt-5 pt-5">
             <div class="row mt-5 pt-5">
                 <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7 mx-auto">
-                    <p>Sólo se consideran <em>memorias presentadas entre los años 2013 y 2023</em>, que hayan sido:</p>
+                    <p>En este sitio es posible encontrar datos de <em><span class="total"></span> memorias presentadas para optar al título de Diseñador(a) de la Universidad de Chile</em> entre los años 2013 y 2023. Estas son memorias que, además de aprobar en su presentación, han sido:</p>
                     <ul>
-                        <li>ingresadas en los registros oficiales de <a href="https://uchile.cl/bibliotecas" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Información y Bibliotecas de la Universidad de Chile</a>; y</li>
+                        <li class="pb-2">ingresadas en los registros de <a href="https://uchile.cl/bibliotecas" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Información y Bibliotecas de la Universidad de Chile</a>; y</li>
                         <li>guiadas por profesores(as) que, para el segundo semestre del año 2023, siguen adscritos(as) al <a href="https://fau.uchile.cl/diseno" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Departamento de Diseño</a> o la <a href="https://fau.uchile.cl/facultad/escuelas-y-direcciones/escuela-de-pregrado" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover" target="_blank" rel="noopener noreferrer">Escuela de Pregrado</a> de la Facultad de Arquitectura y Urbanismo de la Universidad del Chile.</li>
                     </ul>
-                    <p>Con estas condiciones se aseguran las posibilidades de consultar la memoria y/o contactar con profesores guías.</p>
-                    <p>En este listado de <span id="total"></span> memorias es posible encontrar <em>cinco alternativas de título profesional</em>:</p>
+                    <p>Con estas condiciones se aseguran las posibilidades de consultar cada memoria y/o contactar con profesores guías.</p>
+                    <p>Las <span class="total"></span> memorias se dividen en <em>cinco grupos</em>:</p>
                     <div class="table-responsive my-2" style="margin-left:-.5rem; margin-right:-.5rem">
                         <table class="table table-hover">
                             <tbody>
@@ -69,13 +69,19 @@
 
                     <p>Los títulos profesionales de Diseñador(a) Gráfico(a) y Diseñador(a) Industrial, corresponden al reglamento y plan de estudios aprobado en el año 1997 y derogado en el año 2018.</p>
 
-                    <p><em>Según el reglamento y plan de estudios aprobado en el año 2018 (<a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">D.U. EXENTO N°0053924</a>), el proceso de titulación profesional corresponde al tercero de tres ciclos formativos, y tiene una duración de dos semestres (noveno y décimo)</em>; cada estudiante cuenta con cuatro semestres como límite para aprobar sus actividades curriculares, incluido el Examen de Título.</p>
+                    <h3 class="fs-5 text-body-secondary">Importante</h3>
+
+                    <p>Según el reglamento y plan de estudios aprobado en el año 2018 (<a href="https://fau.uchile.cl/dam/jcr:3f7b4e53-cea0-48fe-9f31-8e1991e21d29/Dise%EF%BF%BDo_v4.pdf" target="_blank" class="link-dark">D.U. EXENTO N°0053924</a>), el proceso de titulación profesional corresponde al tercero de tres ciclos formativos, y tiene una duración de dos semestres (noveno y décimo); <em>cada estudiante cuenta con cuatro semestres como límite para aprobar sus actividades curriculares, incluido el Examen de Título</em>.</p>
+
+                    <h3 class="fs-6 text-body-secondary">Noveno semestre</h3>
 
                     <p><em>Durante el noveno semestre, cada estudiante deberá realizar la investigación propia de todo proyecto</em>. <em>Al finalizar el noveno semestre, cada estudiante debe entregar un documento que será evaluado por una comisión de 3 académicos(as)</em>. En la comisión se incluye el (la) profesor(a) guía e integrantes propuestos por el (la) Jefe(a) de Carrera, en consulta al profesor guía, y ratificados por el (la) Director(a) de la Escuela de Pregrado. Estos(as) académicos(as) deberán ser docentes de la carrera de Diseño, con jerarquía de Profesor y adscritos al Departamento de Diseño o la Escuela de Pregrado.</p>
 
                     <p>Para los(as) estudiantes que decidan optar al título profesional con mención, los(as) tres académicos(as) deberán pertenecer a dicha mención. Los(as) estudiantes que decidan optar por no tener mención, tendrán una comisión compuesta por académicos(as) de ambas menciones.</p>
 
                     <p>Cada integrante en la comisión generará un informe escrito con su evaluación del documento entregado por el (la) estudiante. De acuerdo a lo indicado en los informes, el (la) profesor(a) guía procederá a calificar esta etapa del Proyecto de Título I, calificación que será aprobatoria si, al menos, dos integrantes de la comisión así lo definen.</p>
+
+                    <h3 class="fs-6 text-body-secondary">Décimo semestre</h3>
 
                     <p><em>Luego, durante el décimo semestre, cada estudiante deberá desarrollar el proyecto planteado para finalizar el ciclo con el acto formal de presentación y defensa del proyecto, acto denominado Examen de Título, el que se realizará frente a una comisión examinadora compuesta por 4 académicos(as)</em>: el(la) Decano(a) o en quien delegue el ejercicio de dicha facultad (quien presidirá la comisión), el (la) profesor(a) guía y 2 académicos(as), de jerarquía profesor del Departamento de Diseño o la Escuela de Pregrado.</p>
 
@@ -112,7 +118,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             const titular = document.querySelector("#title");            
-            const nTotal = document.querySelector("#total");
+            const nTotal = document.querySelectorAll(".total");
             var mSIN = 0;
             var mDG = 0;
             var mDI = 0;
@@ -136,7 +142,7 @@
                 header: true,
                 complete: function (results) {
                     console.log(results);
-                    nTotal.innerHTML = results.data.length;
+                    nTotal.forEach(t => t.innerHTML = results.data.length);
                     results.data.forEach((x) => {
                         if (x.title == "Memoria para optar al título de Diseñadora Gráfica" || x.title == "Memoria para optar al título de Diseñador Gráfico") {
                             mDG++;
